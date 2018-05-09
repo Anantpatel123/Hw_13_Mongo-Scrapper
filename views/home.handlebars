@@ -1,0 +1,32 @@
+<div class="container">
+
+	<div class="row">
+        {{!-- <center> --}}
+        <div class="col-md-12">
+			<h3 class="text-center text-regular">ALL Articles</h3>	
+			<hr>	
+			<ul>
+				{{!-- {{#if article}} --}}
+				{{#each article}}															
+					<h4>Title: {{this.title}}</h4>
+					<h6>Link: {{this.link}}</h6>
+                    <h6>Summary: {{this.summary}}</h6>                    
+						{{!-- <form action='/api/update/{{this.id}}?_method=PUT' method='POST'> --}}
+						<button type='submit' class="btn btn-default" id="saveArticle" data-id={{this.id}} saved={{this.saved}} >Save Article</button>
+						{{!-- <button type='submit' class="btn btn-default deleteArticle">Delete Article</button> --}}
+					{{!-- </form> --}}
+					<p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+				{{/each}}
+				{{!-- {{else}}
+					<div class="panel panel-default">
+						<div class="panel-body">
+						<h4>Uh Oh. Looks like we don't have any new articles.</h4>
+						</div>
+					</div>
+        		{{/if}} --}}
+			</ul>
+		</div>
+        {{!-- </center> --}}
+			
+	</div>
+</div>

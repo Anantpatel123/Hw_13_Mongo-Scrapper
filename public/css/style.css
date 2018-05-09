@@ -1,0 +1,19 @@
+body {
+    background-color: lightslategrey;
+}
+
+.container {
+    background-color: lightsteelblue;
+}
+#mainpage {
+    background-color: bisque
+}
+h1 {
+    font-size: 50px;
+}
+h3 {
+    font-size: 30px;
+}
+a {
+    font-size: 15px;
+}
