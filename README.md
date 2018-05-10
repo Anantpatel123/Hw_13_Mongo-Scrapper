@@ -27,4 +27,4 @@ An app that scrapes articles from the New York Times website and lets users save
         - cheerio
         - request
 
-[click here to view app]()
+[click here to view app] (https://gentle-ocean-37162.herokuapp.com/)

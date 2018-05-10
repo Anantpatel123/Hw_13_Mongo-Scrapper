@@ -47,32 +47,22 @@ app.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
-    // Now, we grab every h2 within an article tag, and do the following:
-    $(".story-meta").each(function(i, element) {
+    // Now, we grab every article tag, and do the following:
+    $("article").each(function(i, element) {
 
-        // var result = {};
-        // result.title = $(this).children("a").text();
-        // result.link = $(this).children("a").attr("href");
-        // result.summary = $(this).children("a").text();
-
-        var result = {};
-        result.title = $(this).children("h2").text();
-        result.link = $(this).parent("a").attr("href");
-        result.summary = $(this).children("p").text();
-
-      console.log("Here's title: ", result.title);
-      console.log("Here's link: ", result.link);
-      console.log("Here's summary: ", result.summary);
-
-
-
-           
+      var result = {};
+      result.title = $(this).find("h2.headline").text();
+      result.link = $(this).find("a").attr("href");
+      result.summary = $(this).find("p.summary").text();
+              
       //Create a new Article using the `result` object built from scraping
       if (result.title !== "" && result.link !== "" && result.summary !== "") {
+        
       db.Article.create(result)
       .then(function(allArticles) {
         // View the added result in the console
-        console.log("added articles to db ", allArticles); //works
+        // console.log("added articles to db ", allArticles); //works
+        
       })
       .catch(function(err) {
         // If an error occurred, send it to the client
@@ -80,21 +70,21 @@ app.get("/scrape", function(req, res) {
       });
     }//if ends here
 
-  });
+  });  
     res.send("Scrape Complete");          
   });
   
 });
 
 // Route for getting all Articles from the db
-// app.get("/all", function(req, res) {
-//   // TODO: Finish the route so it grabs all of the articles
-//     db.Article.find({})
-//     .then(function(dbArticle) {
-//       res.json(dbArticle);
-//       // console.log("get all articles ", dbArticle);//works
-//     })
-//   });
+app.get("/all", function(req, res) {
+  // TODO: Finish the route so it grabs all of the articles
+    db.Article.find({})
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+      // console.log("get all articles ", dbArticle);//works
+    })
+  });
 
 //GET requests to render Handlebars home page
 app.get("/", function(req, res) {
