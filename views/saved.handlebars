@@ -8,8 +8,8 @@
 			<ul>
 				{{#each dbArticle}}					
 					<h4>Title: {{this.title}}</h4>
-					<h6>Link: {{this.link}}</h6>
-                    <h6>Summary: {{this.summary}}</h6>                    
+					<a href={{this.link}} target="_blank">Link: {{this.link}}</a>
+          <h6>Summary: {{this.summary}}</h6>                    
 						{{!-- <form action='/api/update/{{this.id}}?_method=PUT' method='POST'> --}}
 						<button type='submit' class="btn btn-default" id="addnote" data-toggle="modal" data-target="#myModal" data-id={{this.id}} saved={{this.saved}}>Add Note</button>
 						<button type='submit' class="btn btn-default" id="deleteArticle" data-id={{this.id}} saved={{this.saved}}>Delete Article</button>

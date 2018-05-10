@@ -57,18 +57,17 @@ app.get("/scrape", function(req, res) {
               
       //Create a new Article using the `result` object built from scraping
       if (result.title !== "" && result.link !== "" && result.summary !== "") {
-        
-      db.Article.create(result)
-      .then(function(allArticles) {
-        // View the added result in the console
-        // console.log("added articles to db ", allArticles); //works
-        
-      })
-      .catch(function(err) {
-        // If an error occurred, send it to the client
-        return res.json(err);
-      });
-    }//if ends here
+             
+        db.Article.create(result)
+        .then(function(allArticles) {
+          // View the added result in the console
+          // console.log("added articles to db ", allArticles); //works
+          
+        }).catch(function(err) {
+          // If an error occurred, send it to the client
+          return res.json(err);
+        });
+      }//if ends here
 
   });  
     res.send("Scrape Complete");          

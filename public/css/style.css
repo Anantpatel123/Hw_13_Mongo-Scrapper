@@ -14,6 +14,10 @@ h1 {
 h3 {
     font-size: 30px;
 }
-a {
+#links {
     font-size: 15px;
+}
+a {
+    font-size: 13px;
+    color: inherit;
 }
